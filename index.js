@@ -9,7 +9,7 @@ var pipeBottom = new Image();
 
 head.src = "head.png";
 bgs.src = "bgs.png";
-fg.src = "fg.png";
+
 pipeUp.src = "pipeUp.png";
 pipeBottom.src = "pipeBottom.png";
 
