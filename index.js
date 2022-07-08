@@ -29,15 +29,15 @@ let gap = 430;
 document.addEventListener("keydown", moveUp);
 
 function moveUp() {
-    yPos -=100;
+    yPos -= 100;
     fly.play();
 }
 
 // Создание блоков
 var pipe = [];
 pipe[0] = {
-    x : cvs.width,
-    y : 0
+    x: cvs.width,
+    y: 0
 };
 
 var score = 0;
@@ -51,7 +51,7 @@ function draw() {
     ctx.drawImage(bgs, 0, 0);
     music.play();
 
-    for(var i = 0; i < pipe.length; i++) {
+    for (var i = 0; i < pipe.length; i++) {
         ctx.drawImage(pipeUp, pipe[i].x, pipe[i].y);
         ctx.drawImage(pipeBottom, pipe[i].x, pipe[i].y + pipeUp.height + gap);
 
@@ -71,34 +71,22 @@ function draw() {
         pipe[i].x--;
         pipe[i].x--;
 
-
-
-
-
-        if(pipe[i].x == 100) {
+        if (pipe[i].x == 100) {
             score++;
 
 
         }
 
-
-
-
-
-
-
-
-
-        if(pipe[i].x == 100){
+        if (pipe[i].x == 100) {
             pipe.push({
-                x : cvs.width,
-                y : Math.floor(Math.random() * pipeUp.height) - pipeUp.height
+                x: cvs.width,
+                y: Math.floor(Math.random() * pipeUp.height) - pipeUp.height
             });
         }
 
-//Отслеживание прикосновений
+        //Отслеживание прикосновений
 
-        if(xPos + head.width >= pipe [i].x
+        if (xPos + head.width >= pipe[i].x
             && xPos <= pipe[i].x + pipeUp.width
             && (yPos <= pipe[i].y + pipeUp.height
                 || yPos + head.height >= pipe[i].y + pipeUp.height + gap)
@@ -107,8 +95,7 @@ function draw() {
         }
 
 
-        if(score > 7) {
-
+        if (score > 7) {
 
             pipe[i].x--;
             pipe[i].x--;
@@ -116,25 +103,21 @@ function draw() {
             pipe[i].x--;
             pipe[i].x--;
 
-
-
-            if(pipe[i].x == 100) {
+            if (pipe[i].x == 100) {
                 score++;
 
 
             }
 
-
-            if(pipe[i].x == 100){
+            if (pipe[i].x == 100) {
                 pipe.push({
-                    x : cvs.width,
-                    y : Math.floor(Math.random() * pipeUp.height) - pipeUp.height
+                    x: cvs.width,
+                    y: Math.floor(Math.random() * pipeUp.height) - pipeUp.height
                 });
             }
         }
 
     }
-
 
     ctx.drawImage(fg, 0, 700);
     ctx.drawImage(head, xPos, yPos);
@@ -143,20 +126,11 @@ function draw() {
 
     ctx.fillStyle = "white";
     ctx.font = "24px Verdana";
-    ctx.fillText("Счет: " + score , 30, 40);
-    ctx.fillText("/100", 135,40);
-
-
-
-
-
-
-
+    ctx.fillText("Счет: " + score, 30, 40);
+    ctx.fillText("/100", 135, 40);
 
     requestAnimationFrame(draw);
 
-
 }
-
 
 pipeBottom.onload = draw;
